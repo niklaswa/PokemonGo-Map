@@ -20,7 +20,7 @@ function formatState (state) {
 var $selectExclude = $("#exclude-pokemon");
 var $selectNotify = $("#notify-pokemon");
 
-var numberOfPokemon = 150;
+var numberOfPokemon = 151;
 var idToPokemon = {};
 
 $.getJSON("static/locales/pokemon." + document.documentElement.lang + ".json").done(function(data) {
