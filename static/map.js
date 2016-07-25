@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
 function formatState (state) {
     if (!state.id) { return state.text; }
     var $state = $(
-        '<span><img src="static/icons/' + state.element.value + '.png"> ' + state.text + '</span>'
+        '<span><img height="21" src="static/icons/' + state.element.value + '.png"> ' + state.text + '</span>'
     );
     return $state;
 };
