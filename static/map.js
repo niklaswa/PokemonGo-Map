@@ -9,13 +9,21 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 
+function formatState (state) {
+    if (!state.id) { return state.text; }
+    var $state = $(
+        '<span><img src="static/icons/' + state.element.value + '.png"> ' + state.text + '</span>'
+    );
+    return $state;
+};
+
 var $selectExclude = $("#exclude-pokemon");
 var $selectNotify = $("#notify-pokemon");
 
 var idToPokemon = {};
 
 $.getJSON("static/locales/pokemon." + document.documentElement.lang + ".json").done(function(data) {
-    var pokeList = []
+    var pokeList = [];
 
     $.each(data, function(key, value) {
         pokeList.push( { id: key, text: value } );
@@ -25,11 +33,13 @@ $.getJSON("static/locales/pokemon." + document.documentElement.lang + ".json").d
     // setup the filter lists
     $selectExclude.select2({
         placeholder: "Select Pokémon",
-        data: pokeList
+        data: pokeList,
+        templateResult: formatState
     });
     $selectNotify.select2({
         placeholder: "Select Pokémon",
-        data: pokeList
+        data: pokeList,
+        templateResult: formatState
     });
 
     // recall saved lists
