@@ -20,12 +20,14 @@ function formatState (state) {
 var $selectExclude = $("#exclude-pokemon");
 var $selectNotify = $("#notify-pokemon");
 
+var numberOfPokemon = 150;
 var idToPokemon = {};
 
 $.getJSON("static/locales/pokemon." + document.documentElement.lang + ".json").done(function(data) {
     var pokeList = [];
 
     $.each(data, function(key, value) {
+        if(key > numberOfPokemon) { return false; }
         pokeList.push( { id: key, text: value } );
         idToPokemon[key] = value;
     });
